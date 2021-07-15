@@ -9,18 +9,18 @@ console.log(fetch("https://reqres.in/api/users"))
 //we see this returns a promise so we can use asyc await, .then, and .catch
 
 //2.)
-fetch("https://reqres.in/api/users").then((res) => console.log(res))
+fetch("https://reqres.in/api/users/").then((res) => console.log(res))
 //res = the response object.
 //body in out response object contains all the data but we cant see it.
 //we need to convert this to JSON to view.
 
-fetch("https://reqres.in/api/users")
+fetch("https://reqres.in/api/users/1")
   .then((res) => res.json())
   .then((data) => console.log(data))
 
 //Fetch always succeeds unless there is no network connectivity so .catch doesn't work the way it should.  We have a work around but easiest handled otherwise.
 
-fetch("https://reqres.in/api/users/13")
+fetch("https://reqres.in/api/users/13") //There is no user 13 so 404
   .then((res) => {
     if (res.ok) {
       console.log("Success")
@@ -28,16 +28,16 @@ fetch("https://reqres.in/api/users/13")
       console.log("Not Successful")
     }
   })
-  .then((data[0]) => console.log(data[0]))
+  .then((data) => console.log(data))
 
 //Lets POST a new user by using methods in our optional fetch.
 //send the data using JSON
 fetch("https://reqres.in/api/users/", {
   method: "POST",
-  headers: {
+  headers: {                                   //Must add Headers
     "Content-Type": "application/json",
   },
-  body: JSON.stringify({
+  body: JSON.stringify({                        //Must stringify
     name: "Ragnor",
   }),
 })
