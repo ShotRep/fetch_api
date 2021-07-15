@@ -28,7 +28,7 @@ fetch("https://reqres.in/api/users/13")
       console.log("Not Successful")
     }
   })
-  .then((data) => console.log(data))
+  .then((data[0]) => console.log(data[0]))
 
 //Lets POST a new user by using methods in our optional fetch.
 //send the data using JSON
